@@ -1,6 +1,6 @@
 ---
 - name: Setup user on Data Science Toolbox
-  hosts: default
+  hosts: local
   become: true
 
   tasks:
@@ -92,7 +92,7 @@
           export LC_ALL=en_US.UTF-8
           export HISTSAVE=1000000
           export EDITOR=nano
-          export TZ="Europe/Amsterdam"
+          export TZ="America/Toronto"
           alias l="ls --color -lhF --group-directories-first"
           alias parallel="parallel --will-cite"
           alias python="python3"

@@ -1,4 +1,4 @@
-DOCKER_REPO = datasciencetoolbox
+DOCKER_REPO = bbqbrewer
 DOCKER_NAME = dsatcl2e
 
 docker-build:

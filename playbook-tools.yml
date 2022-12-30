@@ -1,6 +1,6 @@
 ---
 - name: Install tools on Data Science Toolbox
-  hosts: default
+  hosts: local
   become: true
 
   tasks:

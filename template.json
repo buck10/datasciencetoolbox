@@ -5,7 +5,7 @@
   "builders": [
     {
       "type": "docker",
-      "image": "ubuntu:21.04",
+      "image": "ubuntu:22.04",
       "commit": true,
       "changes": [
         "USER dst",
@@ -41,7 +41,7 @@
     [
       {
         "type": "docker-tag",
-        "repository": "datasciencetoolbox/dsatcl2e",
+        "repository": "bbqbrewer/dsatcl2e",
         "tags": ["latest", "{{ isotime \"20060102\" }}"],
         "force": true,
         "only": ["docker"]
@@ -50,7 +50,7 @@
         "type": "docker-push",
         "login": true,
         "login_server": "docker.io",
-        "login_username": "datasciencetoolbox",
+        "login_username": "bbqbrewer",
         "login_password": "{{user `docker_hub_password`}}",
         "keep_input_artifact": false,
         "only": ["docker"]
