@@ -4,10 +4,20 @@
   become: true
 
   tasks:
+    - name: Install zsh
+      tags: zsh
+      apt:
+        pkg: zsh
+
+    - name: Install locales
+      tags: locales
+      apt:
+        pkg: locales
+
     - name: Install git
       tags: git
-      package:
-        name: git
+      apt:
+        pkg: git
 
     - name: Install make
       tags: make
@@ -76,6 +86,9 @@
         pkg:
           - nodejs
           - npm
+
+    - name: Install tldr
+      shell: npm install -g tldr
 
     - name: Install xml2json
       shell: npm install -g xml2json-command
