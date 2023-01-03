@@ -14,10 +14,7 @@
             "commit": true,
             "changes": [
                 "USER dst",
-                "ENV HOSTNAME datasciencetoolbox",
-                "ENV SHELL /usr/bin/bash",
-                "WORKDIR /home/dst",
-                "ENTRYPOINT [\"/usr/bin/bash\"]"
+                "WORKDIR /home/dst"
             ],
             "run_command": [ "-d", "-i", "-t", "--name", "{{user `ansible_host`}}", "{{.Image}}", "/bin/bash" ]
         }
