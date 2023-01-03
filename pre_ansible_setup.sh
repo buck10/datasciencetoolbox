@@ -13,4 +13,4 @@ export DEBIAN_FRONTEND=noninteractive
 dpkg-reconfigure tzdata
 
 # install requirements for ansible playbook package installation.
-apt-get install -y python3 python3-pip sudo
+apt-get install -y python3 python3-pip python-is-python3 sudo
