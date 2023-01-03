@@ -37,27 +37,43 @@
         block: |
           export PAGER="less"
           export PATH="/usr/bin/dsutils:/usr/local/lib/R/site-library/rush/exec:${PATH}"
+          PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[00m\]\$ "
 
-    - name: Ensure .bash_aliases exists
-      file:
-        path: /home/dst/.bash_aliases
-        state: touch
-        owner: dst
-        group: dst
+    - name: Setup .bash_aliase
+      block:
+      - name: Ensure .bash_aliases exists
+        file:
+          path: /home/dst/.bash_aliases
+          state: touch
+          owner: dst
+          group: dst
+      - name: Add aliases to .bash_aliases
+        blockinfile:
+          path: /home/dst/.bash_aliases
+          block: |
+            alias l="ls -lhF --group-directories-first"
+            alias parallel="parallel --will-cite"
+            alias python="python3"
 
-    - name: Add bash aliases
-      blockinfile:
-        path: /home/dst/.bash_aliases
-        block: |
-          alias l="ls -lhF --group-directories-first"
-          alias parallel="parallel --will-cite"
-          alias python="python3"
-
-    - name: Symlink python3
-      file:
-        src: /usr/bin/python3
-        dest: /usr/bin/python
-        state: link
+    - name: Setup .inputrc
+      block:
+      - name: Ensure .inputrc exists
+        file:
+          path: /home/dst/.inputrc
+          state: touch
+          owner: dst
+          group: dst
+      - name: Configure .inputrc
+        blockinfile:
+          path: /home/dst/.inputrc
+          block: |
+            set editing-mode vi
+            set show-mode-in-prompt On
+            set vi-cmd-mode-string :
+            set vi-ins-mode-string +
+            set keyseq-timeout 25
+            "\e[1;5A":history-search-backward
+            "\e[1;5B":history-search-forward
 
     - name: Empty tmp directory
       shell:
