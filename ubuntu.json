@@ -4,6 +4,7 @@
         "ansible_connection": "docker"
     },
     "sensitive-variables": [
+        "docker_hub_username",
         "docker_hub_password"
     ],
     "builders": [
@@ -54,7 +55,7 @@
         [
             {
                 "type": "docker-tag",
-                "repository": "bbqbrewer/dsatcl2e",
+                "repository": "{{user `docker_hub_username`}}/dsatcl2e",
                 "tags": ["latest", "{{ isotime \"20060102\" }}"],
                 "force": true,
                 "only": ["docker"]
@@ -63,7 +64,7 @@
                 "type": "docker-push",
                 "login": true,
                 "login_server": "docker.io",
-                "login_username": "bbqbrewer",
+                "login_username": "{{user `docker_hub_username`}}",
                 "login_password": "{{user `docker_hub_password`}}",
                 "keep_input_artifact": false,
                 "only": ["docker"]

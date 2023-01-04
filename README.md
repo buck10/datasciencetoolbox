@@ -1,21 +1,39 @@
-# Data Science Toolbox <img src="https://github.com/datasciencetoolbox/www/raw/master/src/dst-logo.png" align="right" width="100px" />
+# Data Science Toolbox (Forked)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-If you're a data scientist, installing all the software you need can be quite involved. The goal of the Data Science Toolbox is to provide a virtual environment that will enable you to start doing data science in a matter of minutes. 
+This is a fork of the [Data Science Toolbox](https://github.com/datasciencetoolbox/datasciencetoolbox).
 
-The Data Science Toolbox is currently being revived for the upcoming second edition of [Data Science at the Command Line](https://www.datascienceatthecommandline.com). 
-At the moment there's only a basic Docker image ([datasciencetoolbox/dsatcl2e](https://hub.docker.com/repository/docker/datasciencetoolbox/dsatcl2e)), which is based on Ubuntu 20.04 and includes tools such as:
+This version is based upon Ubuntu 22.04LTS and includes tools such as:
 
 * jq
 * xmlstarlet
 * GNU parallel
 * xsv
 * pup
+* ripgrep
 * vowpal wabbit
 
-Under the hood, this project employs Packer, Ansible, and Docker. We'll soon add support for other platforms such as Vagrant, VirtualBox, VMware, and AWS. Expect many breaking changes in the coming months as we're learning this on-the-fly. Stay tuned.
+Under the hood, this project employs Packer, Ansible, and Docker.
 
+## Building
+
+In order to build this docker image, you must have Packer, Ansible and Docker installed and you should have an account on Docker Hub if you wish to upload the resulting image.
+
+After cloning the repository, create a file name `variables.json` and add the following:
+
+```json
+{
+    "docker_hub_username": "<your docker hub username here>",
+    "docker_hub_password": "<your docker hub password here>"
+}
+```
+
+You can then build the image using:
+
+```bash
+sudo make docker-build
+```
 
 ## License
 
