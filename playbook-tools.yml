@@ -165,12 +165,12 @@
           - coolbutuseless/devoutansi
           - jeroenjanssens/rush@ansi
 
-    - name: Install PyData
-      tags: pydata
+    - name: Install Pandas and Numpy
+      tags:
+        - pandas
+        - numpy
       pip:
-        name:
-          - numpy
-          - pandas
+        name: pandas
 
     - name: Install requirements for scrape
       tags:
